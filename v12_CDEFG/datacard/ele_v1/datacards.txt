@@ -1,0 +1,47 @@
+imax 1   number of channels
+jmax *   number of processes-1
+kmax *  number of nuisance parameters (sources of systematical uncertainties)
+shapes * * datacard_ele.root $PROCESS_central_value $SYSTEMATIC
+shapes data_obs * datacard_ele.root  data_central_value
+Observation 1544.0000
+# we have just one channel, in which we observe 0 events
+bin datacard_ele
+# now we list the expected events for signal and all backgrounds in that bin
+# the second process line must have a positive number for backgrounds, and 0 for signal
+# then we list the independent sources of uncertainties, and give their effect (syst. error)
+# on each process and bin
+bin	datacard_ele	datacard_ele	datacard_ele	datacard_ele	datacard_ele	datacard_ele	datacard_ele
+process	zg	tt_22	ww_22	wz_22	zz_22	nonpromptBCD_barrel	nonpromptBCD_endcap
+process	0	1	2	3	4	5	6
+rate	946.82923	15.648920	1.1503361	6.3950999	2.9063969	502.00000	80.000000
+lumi_cor    lnN	1.024   1.024	1.024	1.024	1.024   -	-
+ABCD_stat	lnN	-	-	-	-	-	1.0476	1.1203
+ABCD_syst	lnN	-	-	-	-	-	1.1	1.279
+#zg_PSISR_   shape   1.000   -   -   -   -   -	-
+#zg_PSFSR_   shape   1.000   -   -   -   -   -	-
+tt_PSISR_   shape   -   1.000   -   -   -   -	-
+tt_PSFSR_   shape   -   1.000   -   -   -   -	-
+#zg_scale_   shape   1.000   -   -   -   -    -	-
+tt_scale_   shape   -   1.000   -   -   -   -	-
+#zg_pdf_   shape   1.000   -   -   -   -  -	-
+tt_pdf_   shape   -   1.000   -   -   -   -	-
+#zg_photon_id_	shape   1.000   -   -   -   -   -   -
+tt_photon_id_	shape   -   1.000   -   -   -   -     -
+#zg_photon_scale_	shape   1.000   -   -   -   -   -   -
+#zg_photon_smearing_	shape   1.000   -   -   -   -   -   -
+tt_photon_scale_	shape   -   1.000   -   -   -   -     -
+tt_photon_smearing_	shape   -   1.000   -   -   -   -     -
+#zg_ele1_id_	shape   1.000   -   -   -   -   -   -
+#zg_ele2_id_	shape   1.000   -   -   -   -   -   -
+tt_ele1_id_	shape   -   1.000   -   -   -   -     -
+tt_ele2_id_	shape   -   1.000   -   -   -   -     -
+pileup	lnN	1.001	1.001	1.001	1.001	1.001	-	-
+double_eleon_trigger	lnN	1.03	1.03	1.03	1.03	1.03	-	-
+#
+datacard_ele	autoMCStats	10	0	1 
+#
+
+#theory group = zg_PSISR_       zg_PSFSR_       tt_PSISR_       tt_PSFSR_       zg_scale_       outfiducial_scale_      tt_scale_       zg_pdf_ outfiducial_pdf_        tt_pdf_
+theory group = tt_PSISR_       tt_PSFSR_       tt_scale_        tt_pdf_
+sys group = lumi_cor
+

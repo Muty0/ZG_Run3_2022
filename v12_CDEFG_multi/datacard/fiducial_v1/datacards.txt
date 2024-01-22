@@ -1,0 +1,29 @@
+imax 1   number of channels
+jmax *   number of processes-1
+kmax *  number of nuisance parameters (sources of systematical uncertainties)
+shapes * * datacard_2022FG.root $PROCESS_central_value $SYSTEMATIC
+shapes data_obs * datacard_2022FG.root  data_central_value
+Observation 4103.0000
+# we have just one channel, in which we observe 0 events
+bin datacard_2022FG
+# now we list the expected events for signal and all backgrounds in that bin
+# the second process line must have a positive number for backgrounds, and 0 for signal
+# then we list the independent sources of uncertainties, and give their effect (syst. error)
+# on each process and bin
+bin	datacard_2022FG	datacard_2022FG	datacard_2022FG	datacard_2022FG	datacard_2022FG	datacard_2022FG	datacard_2022FG	datacard_2022FG
+process	zg	tt	ww	wz	zz	nonpromptBCD_barrel	nonpromptBCD_endcap	outfiducial
+process	0	1	2	3	4	5	6	7
+rate	2621.6405	32.035282	6.6200553	136.45632	12.039737	1112.2400	324.16000	245.57636
+lumi_cor    lnN	1.024   1.024	1.024	1.024	1.024   -	-	1.024
+bkg_uncer	lnN	-	-	-	-	-	1.05	1.05	-
+#zg_PSISR_   shape   1.000   -   -   -   -   -	-	-
+#zg_PSFSR_   shape   1.000   -   -   -   -   -	-	-
+tt_PSISR_   shape   -   1.000   -   -   -   -	-	-
+tt_PSFSR_   shape   -   1.000   -   -   -   -	-	-
+#zg_scale_   shape   1.000   -   -   -   -    -	-	-
+tt_scale_   shape   -   1.000   -   -   -   -	-	-
+#zg_pdf_   shape   1.000   -   -   -   -  -	-	-
+tt_pdf_   shape   -   1.000   -   -   -   -	-	-
+
+datacard_2022FG	autoMCStats	10	0	1 
+
